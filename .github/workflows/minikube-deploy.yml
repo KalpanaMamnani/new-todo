@@ -16,12 +16,12 @@ jobs:
       run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build -f todo_app/Dockerfile -t kalpanamamnani/todo_app:latest .
+          docker build -f Dockerfile -t kalpanamamnani/todo_app:latest .
           echo -n "verifying images:"
           docker images         
     - name: Deploy to minikube
       run:
-        kubectl apply -f todo_app/k8-deploy.yml
+        kubectl apply -f k8-deploy.yml
     - name: Test service URLs
       run: |
           minikube service list
