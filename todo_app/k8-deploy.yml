@@ -1,0 +1,37 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: todo_app
+  namespace: default
+  labels:
+    app: todo_app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo_app
+  template:
+    metadata:
+      labels:
+        app: todo_app
+    spec:
+      containers:
+      - name: todo_app
+        image: "ghcr.io/kalpanamamnani/my-web-app:latest"
+        ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo_app
+  namespace: default
+spec:
+  selector:
+    app: todo_app
+  type: NodePort
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
