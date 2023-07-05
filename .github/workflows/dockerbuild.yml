@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Login to GitHub Container Registry
-        run: echo $CR_PAT | docker login ghcr.io -u kalpanamamnani16@gmail.com --password-stdin
+        run: docker login ghcr.io -u kalpanamamnani16@gmail.com -p $CR_PAT
 
       - name: Build Docker image
         run: docker build -t ghcr.io/kalpanamamnani/new-todo:latest .
