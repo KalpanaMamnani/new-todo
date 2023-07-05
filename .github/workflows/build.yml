@@ -21,4 +21,4 @@ jobs:
     
     - name: Build the Docker image
       working-directory: todo_app
-      run: docker build . --file Dockerfile --tag new-todo:$(date +%s)
+      run: docker build . --file todo_app/Dockerfile --tag new-todo:$(date +%s)
